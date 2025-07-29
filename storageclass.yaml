@@ -1,0 +1,16 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azurefile-rws
+provisioner: file.csi.azure.com
+parameters:
+  skuName: Standard_LRS
+allowVolumeExpansion: true
+reclaimPolicy: Delete
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=0
+  - gid=0
+  - mfsymlinks
+volumeBindingMode: WaitForFirstConsumer
