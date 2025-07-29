@@ -26,3 +26,19 @@ spec:
       - name: shared-data
         persistentVolumeClaim:
           claimName: data-azurefile
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-frontend
+  namespace: dev
+spec:
+  selector:
+    app: demo-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
